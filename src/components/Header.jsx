@@ -1,8 +1,6 @@
 import { Navbar, Avatar } from "flowbite-react"
 import { useLocation } from 'react-router-dom';
 function Header() {
-	const location = useLocation();
-  console.log(location.pathname);
 	return (
 		<div className="pr-4 md:pr-2">
 			<Navbar fluid rounded theme={{

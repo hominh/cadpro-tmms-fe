@@ -1,5 +1,4 @@
-import { HR, Sidebar, Badge, Table, Select, Button, TextInput, Drawer, Label, Radio, Checkbox, Modal } from "flowbite-react";
-import Header from "../components/Header";
+import { HR, Sidebar, Badge, Table, Select, Button, TextInput, Drawer, Label, Radio, Checkbox, Modal, Textarea } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { MapContainer, TileLayer, useMap, } from 'react-leaflet'
@@ -26,8 +25,10 @@ export default function Camera() {
 		iconSize: [24, 16]
 	});
 	return (
-		<div className="container mx-auto max-w-full">
-			<HR className="my-0" />
+		<>
+			<div>
+				<HR className="my-0" />
+			</div>
 			<Modal
 				theme={{
 					header: {
@@ -240,6 +241,20 @@ export default function Camera() {
 										placeholder=""
 										className="mt-2"
 										required />
+								</div>
+								<div className="md:mt-4">
+									<Label htmlFor="fromdate" value="Danh sách số điện thoại" className="text-sm font-medium text-gray-900" />
+									<Textarea id="comment" rows={3} />
+								</div>
+								<div className="md:mt-2 text-xs font-normal text-gray-500">
+									Các số cách nhau bằng dấu |
+								</div>
+								<div className="md:mt-4">
+									<Label htmlFor="fromdate" value="Danh sách email" className="text-sm font-medium text-gray-900" />
+									<Textarea id="comment" rows={3} />
+								</div>
+								<div className="md:mt-2 text-xs font-normal text-gray-500">
+									Các số cách nhau bằng dấu |
 								</div>
 								<div className="md:mt-4">
 									<Label htmlFor="fromdate" value="Bật/Tắt cảnh báo" className="text-sm font-medium text-gray-900" />
@@ -1179,6 +1194,6 @@ export default function Camera() {
 					</div>
 				</div>
 			</section>
-		</div>
+		</>
 	);
 }

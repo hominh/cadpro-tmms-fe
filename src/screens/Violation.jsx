@@ -18,7 +18,7 @@ export default function Violation() {
     setShowDetailViolation(true);
   };
   const onSetActiveViolationItem = (item) => {
-    if (item !== activeViolationFilter){
+    if (item !== activeViolationFilter) {
       setActiveViolationFilter(item);
     }
     else {
@@ -26,10 +26,12 @@ export default function Violation() {
     }
   };
   const [activeViolationFilter, setActiveViolationFilter] = useState('violation_all_today');
-  
+
   return (
-    <div className="container mx-auto max-w-full">
-      <HR className="my-0" />
+    <>
+      <div>
+        <HR className="my-0" />
+      </div>
       <section className="pl-4 pt-4 bg-gray-100 sm:px-4">
         <p className="font-semibold text-xl text-gray-900">Vi phạm</p>
       </section>
@@ -96,28 +98,28 @@ export default function Violation() {
                         aria-label="Quick filter">
                         <Sidebar.Items>
                           <Sidebar.ItemGroup>
-                            <Sidebar.Item key={1} id="1" label="1" className={`${activeViolationFilter === 'violation_all_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={()=>onSetActiveViolationItem("violation_all_today")}>
+                            <Sidebar.Item key={1} id="1" label="1" className={`${activeViolationFilter === 'violation_all_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={() => onSetActiveViolationItem("violation_all_today")}>
                               Tất cả
                             </Sidebar.Item>
-                            <Sidebar.Item key={2} id="1" label="1" className={`${activeViolationFilter === 'violation_detected_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={()=>onSetActiveViolationItem("violation_detected_today")}>
+                            <Sidebar.Item key={2} id="1" label="1" className={`${activeViolationFilter === 'violation_detected_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={() => onSetActiveViolationItem("violation_detected_today")}>
                               Đã phát hiện
                             </Sidebar.Item>
-                            <Sidebar.Item key={3} id="1" label="1" className={`${activeViolationFilter === 'violation_need_process_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={()=>onSetActiveViolationItem("violation_need_process_today")}>
+                            <Sidebar.Item key={3} id="1" label="1" className={`${activeViolationFilter === 'violation_need_process_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={() => onSetActiveViolationItem("violation_need_process_today")}>
                               Cần xử lý
                             </Sidebar.Item>
-                            <Sidebar.Item key={4} id="1" label="1" className={`${activeViolationFilter === 'violation_processed_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={()=>onSetActiveViolationItem("violation_processed_today")}>
+                            <Sidebar.Item key={4} id="1" label="1" className={`${activeViolationFilter === 'violation_processed_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={() => onSetActiveViolationItem("violation_processed_today")}>
                               Đã xử lý
                             </Sidebar.Item>
-                            <Sidebar.Item key={5} id="1" label="1" className={`${activeViolationFilter === 'violation_canceled_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={()=>onSetActiveViolationItem("violation_canceled_today")}>
+                            <Sidebar.Item key={5} id="1" label="1" className={`${activeViolationFilter === 'violation_canceled_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={() => onSetActiveViolationItem("violation_canceled_today")}>
                               Đã hủy
                             </Sidebar.Item>
-                            <Sidebar.Item key={6} id="1" label="1" className={`${activeViolationFilter === 'violation_custompreset_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={()=>onSetActiveViolationItem("violation_custompreset_today")}>
+                            <Sidebar.Item key={6} id="1" label="1" className={`${activeViolationFilter === 'violation_custompreset_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={() => onSetActiveViolationItem("violation_custompreset_today")}>
                               Custom preset #1
                             </Sidebar.Item>
-                            <Sidebar.Item key={7} id="1" label="1" className={`${activeViolationFilter === 'violation_truck_ran_red_light_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={()=>onSetActiveViolationItem("violation_truck_ran_red_light_today")}>
+                            <Sidebar.Item key={7} id="1" label="1" className={`${activeViolationFilter === 'violation_truck_ran_red_light_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={() => onSetActiveViolationItem("violation_truck_ran_red_light_today")}>
                               Xe tải vượt đèn đỏ
                             </Sidebar.Item>
-                            <Sidebar.Item key={8} id="1" label="1" className={`${activeViolationFilter === 'violation_over60_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={()=>onSetActiveViolationItem("violation_over60_today")}>
+                            <Sidebar.Item key={8} id="1" label="1" className={`${activeViolationFilter === 'violation_over60_today' ? "flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 bg-gray-100 dark:bg-gray-700" : ""}`} onClick={() => onSetActiveViolationItem("violation_over60_today")}>
                               Xe chạy quá tốc độ 60km/h
                             </Sidebar.Item>
                           </Sidebar.ItemGroup>
@@ -762,6 +764,6 @@ export default function Violation() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
