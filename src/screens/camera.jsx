@@ -27,7 +27,6 @@ export default function Camera() {
 	});
 	return (
 		<div className="container mx-auto max-w-full">
-			<Header />
 			<HR className="my-0" />
 			<Modal
 				theme={{
@@ -80,7 +79,7 @@ export default function Camera() {
 						base: 'fixed z-40 bg-white pb-4 pt-4 transition-transform dark:bg-gray-800',
 						position: {
 							right: {
-								on: 'right-0 top-0 h-screen w-4/5 transform-none'
+								on: 'right-0 top-0 h-screen w-3/5 transform-none'
 							}
 						}
 					},
@@ -99,8 +98,8 @@ export default function Camera() {
 				</div>
 				<HR className="mt-2 mb-0" />
 				<Drawer.Items>
-					<div className="grid grid-cols-1 md:grid-cols-5 gap-4 pl-4">
-						<div className="md:col-span-2 pt-4 flex flex-col h-screen">
+					<div className="grid grid-cols-1 md:flex md:flex-row gap-4 pl-4">
+						<div className="w-400 pt-4 flex flex-col h-screen">
 							<div className="flex flex-col overflow-y-auto h-full max-h-screen">
 								<div className="text-base font-semibold">
 									Thông tin camera
@@ -504,16 +503,28 @@ export default function Camera() {
 								<div className="mt-4">
 									<div className="flex flex-row gap-2.5">
 										<div>
-											<Button color="blue" size="xs">Thêm</Button>
+											<Button
+												theme={{
+													size: {
+														sm: 'px-3 py-2 text-sm'
+													}
+												}}
+												color="blue" size="sm">Thêm</Button>
 										</div>
 										<div>
-											<Button color="light" size="xs">Bỏ qua</Button>
+											<Button
+												theme={{
+													size: {
+														sm: 'px-3 py-2 text-sm'
+													}
+												}}
+												color="light" size="sm">Bỏ qua</Button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div className="md:col-span-3 w-full min-h-screen">
+						<div className="flex w-full min-h-screen">
 							<MapContainer
 								className="w-full min-h-screen bg-red-50" center={centerMap} zoom={12} scrollWheelZoom={true}>
 								<ResizeMap />

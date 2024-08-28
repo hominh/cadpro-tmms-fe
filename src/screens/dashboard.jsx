@@ -101,10 +101,8 @@ export default function Dashboard() {
 				console.error('Error fetching data:', error)
 			})
 	}, []);
-	console.log(data1, data2);
 	return (
 		<div className="container mx-auto max-w-full">
-			<Header />
 			<HR className="my-0" />
 			<section className="">
 			<div className="bg-gray-100 ">

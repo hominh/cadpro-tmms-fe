@@ -1,11 +1,15 @@
 import { Label, TextInput, Button, Checkbox } from "flowbite-react";
 import { useState } from "react";
+import { useAuth } from "../context/AuthProvider";
 
 export default function Login() {
-	const [username, setUsername] = useState('');
+	const [phone, setPhone] = useState('');
 	const [password, setPassword] = useState('');
+	const auth = useAuth();
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		auth.loginAction(phone, password);
 	};
 	return (
 		<section className="bg-gray-50 dark:bg-gray-900">
@@ -36,7 +40,7 @@ export default function Login() {
 								<div className="mb-2 block">
 									<Label htmlFor="phone" value="Tên tài khoản" />
 								</div>
-								<TextInput id="username" type="text" placeholder="name@example.com" onChange={e => setUsername(e.target.value)} required />
+								<TextInput id="username" type="text" placeholder="name@example.com" onChange={e => setPhone(e.target.value)} required />
 							</div>
 							<div>
 								<div className="mb-2 block">

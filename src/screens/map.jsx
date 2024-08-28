@@ -101,7 +101,6 @@ export default function Map() {
     <div className="container mx-auto max-w-full md:h-screen">
       <div className="flex md:h-full flex-col md:overflow-y-hidden">
         <div>
-          <Header />
           <HR className="my-0" />
         </div>
         <div className="flex h-full md:overflow-y-hidden">

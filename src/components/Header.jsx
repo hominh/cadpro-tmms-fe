@@ -1,7 +1,8 @@
 import { Navbar, Avatar } from "flowbite-react"
-import Logo from '../assets/Logo.png';
-
+import { useLocation } from 'react-router-dom';
 function Header() {
+	const location = useLocation();
+  console.log(location.pathname);
 	return (
 		<div className="pr-4 md:pr-2">
 			<Navbar fluid rounded theme={{
@@ -30,11 +31,12 @@ function Header() {
 							</defs>
 						</svg>
 					</Navbar.Link>
-					<Navbar.Link className="md:pl-8 md:pt-1.5" href="#" active>
+					<Navbar.Link className={`md:pl-8 md:pt-1.5 ${useLocation().pathname === "/dashboard" ? " bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700 nav-link active" : ""}`} href="/#dashboard">
 						Trang chủ
 					</Navbar.Link>
-					<Navbar.Link href="#" className="md:pl-6 md:pt-1.5">Bản đồ</Navbar.Link>
-					<Navbar.Link href="#" className="md:pl-5 md:pt-1.5">Vi phạm</Navbar.Link>
+					<Navbar.Link href="/#map" className={`md:pl-4 md:pt-1.5 ${useLocation().pathname === "/map" ? " bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700 nav-link active" : ""}`}>Bản đồ</Navbar.Link>
+					<Navbar.Link href="/#violation" className={`md:pl-4 md:pt-1.5 ${useLocation().pathname === "/violation" ? " bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700 nav-link active" : ""}`}>Vi phạm</Navbar.Link>
+					<Navbar.Link href="/#camera" className={`md:pl-4 md:pt-1.5 ${useLocation().pathname === "/camera" ? " bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700 nav-link active" : ""}`}>Camera</Navbar.Link>
 				</Navbar.Collapse>
 				<div className="flex md:order-2">
 					<div className="grid grid-cols-5 md:grid-cols-5 gap-4">
