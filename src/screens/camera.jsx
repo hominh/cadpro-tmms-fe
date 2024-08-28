@@ -541,7 +541,7 @@ export default function Camera() {
 						</div>
 						<div className="flex w-full min-h-screen">
 							<MapContainer
-								className="w-full min-h-screen bg-red-50" center={centerMap} zoom={12} scrollWheelZoom={true}>
+								className="w-full min-h-screen" center={centerMap} zoom={12} scrollWheelZoom={true}>
 								<ResizeMap />
 								<TileLayer
 									className="w-full"
