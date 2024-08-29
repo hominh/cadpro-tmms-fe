@@ -1,9 +1,8 @@
-import { Tabs, HR, TextInput, Button, Table, Pagination, Label, Select, Accordion, Textarea, Sidebar, Badge, Drawer, ToggleSwitch, Timeline } from "flowbite-react";
+import { HR, TextInput, Button, Label, Select, Accordion, Textarea, Sidebar, Drawer, ToggleSwitch, Timeline } from "flowbite-react";
 import { useState, useEffect } from "react";
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
-import Header from "../components/Header";
-import { MapContainer, TileLayer, useMap, } from 'react-leaflet'
+import { MapContainer, TileLayer} from 'react-leaflet'
 import { Marker } from "react-leaflet";
 import { Popup } from "react-leaflet";
 import 'leaflet/dist/leaflet.css'

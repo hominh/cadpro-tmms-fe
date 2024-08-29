@@ -1,5 +1,5 @@
-import { HR, Sidebar, Badge, Table, Select, Button, TextInput, Drawer, Label, Radio, Checkbox, Modal, Textarea } from "flowbite-react";
-import { useEffect, useState } from "react";
+import { HR, Sidebar, Table, Select, Button, TextInput, Drawer, Label, Radio, Checkbox, Modal, Textarea } from "flowbite-react";
+import { useState, useEffect } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { MapContainer, TileLayer, useMap, } from 'react-leaflet'
 import { Marker } from "react-leaflet";
@@ -7,6 +7,7 @@ import { Popup } from "react-leaflet";
 import 'leaflet/dist/leaflet.css'
 import { Icon } from "leaflet";
 import camfixed from '../assets/cam-fixed.png';
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 export default function Camera() {
 	const [showFormAddCamera, setShowFormAddCamera] = useState(false);
@@ -15,6 +16,7 @@ export default function Camera() {
 	const [centerMap, setCenterMap] = useState([10.502307, 107.169205]);
 	const [positionMap1, setPositionMap1] = useState([10.502307, 107.169205]);
 	const [openModalDeleteCamera, setOpenModalDeleteCamera] = useState(false);
+	const [classNameDrawer, setClassNameDrawer] = useState('');
 	const ResizeMap = () => {
 		const map = useMap();
 		map._onResize();
@@ -24,6 +26,17 @@ export default function Camera() {
 		iconUrl: camfixed,
 		iconSize: [24, 16]
 	});
+	const handleWidthDrawer = () => {
+		if (isMobile) {
+      setClassNameDrawer('right-0 top-0 h-screen w-full transform-none');
+    }
+    else {
+      setClassNameDrawer('right-0 top-0 h-screen w-3/5 transform-none');
+    }
+	};
+	useEffect(() => {
+    handleWidthDrawer();
+  }, []);
 	return (
 		<>
 			<div>
@@ -80,7 +93,7 @@ export default function Camera() {
 						base: 'fixed z-40 bg-white pb-4 pt-4 transition-transform dark:bg-gray-800',
 						position: {
 							right: {
-								on: 'right-0 top-0 h-screen w-3/5 transform-none'
+								on: `${classNameDrawer}`
 							}
 						}
 					},
@@ -99,13 +112,474 @@ export default function Camera() {
 				</div>
 				<HR className="mt-2 mb-0" />
 				<Drawer.Items>
-					<div className="grid grid-cols-1 md:flex md:flex-row gap-4 pl-4">
-						<div className="w-400 pt-4 flex flex-col h-screen">
-							<div className="flex flex-col overflow-y-auto h-full max-h-screen">
+					<BrowserView>
+						<div className="grid grid-cols-1 md:flex md:flex-row gap-4 pl-4">
+							<div className="w-400 pt-4 flex flex-col h-screen">
+								<div className="flex flex-col overflow-y-auto h-full max-h-screen">
+									<div className="text-base font-semibold">
+										Thông tin camera
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Vị trí" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															xs: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="xs"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Số hiệu nút" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															xs: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="xs"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Tên camera" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															xs: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="xs"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Loại camera" className="text-sm font-medium text-gray-900" />
+										<Select
+											theme={{
+												field: {
+													select: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											id="countries"
+											className="mt-2"
+											required>
+											<option>United States</option>
+											<option>Canada</option>
+											<option>France</option>
+											<option>Germany</option>
+										</Select>
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Tủ camera" className="text-sm font-medium text-gray-900" />
+										<Select
+											theme={{
+												field: {
+													select: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											id="countries"
+											className="mt-2"
+											required>
+											<option>United States</option>
+											<option>Canada</option>
+											<option>France</option>
+											<option>Germany</option>
+										</Select>
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Số hiệu camera" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="IP" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Danh sách số điện thoại" className="text-sm font-medium text-gray-900" />
+										<Textarea id="comment" rows={3} />
+									</div>
+									<div className="md:mt-2 text-xs font-normal text-gray-500">
+										Các số cách nhau bằng dấu |
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Danh sách email" className="text-sm font-medium text-gray-900" />
+										<Textarea id="comment" rows={3} />
+									</div>
+									<div className="md:mt-2 text-xs font-normal text-gray-500">
+										Các số cách nhau bằng dấu |
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Bật/Tắt cảnh báo" className="text-sm font-medium text-gray-900" />
+									</div>
+									<div className="flex flex-row gap-2">
+										<div>
+											<Radio
+												theme={{
+													root: 'h-4 w-4 border border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-cyan-600 dark:focus:ring-cyan-600'
+												}}
+												id="united-state" name="countries" value="USA" defaultChecked />
+											<Label htmlFor="united-state" className="ml-1">Bật</Label>
+										</div>
+										<div>
+											<Radio
+												theme={{
+													root: 'h-4 w-4 border border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-cyan-600 dark:focus:ring-cyan-600'
+												}}
+												id="united-state" name="countries" value="USA" defaultChecked />
+											<Label htmlFor="united-state" className="ml-1">Tắt</Label>
+										</div>
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Assign Role" className="text-sm font-medium text-gray-900" />
+									</div>
+									<div className="flex flex-row gap-4">
+										<div className="flex flex-row gap-1">
+											<div>
+												<Checkbox
+													color="blue"
+													id="accept" defaultChecked />
+											</div>
+											<div className="mt-1">
+												<Label htmlFor="accept" className="flex">Mất kết nối</Label>
+											</div>
+
+										</div>
+										<div className="flex flex-row gap-1">
+											<div>
+												<Checkbox color="blue" id="accept" />
+											</div>
+											<div className="mt-1">
+												<Label htmlFor="accept" className="flex">Ùn tắc</Label>
+											</div>
+
+										</div>
+										<div className="flex flex-row gap-1">
+											<div>
+												<Checkbox color="blue" id="accept" />
+											</div>
+											<div className="mt-1">
+												<Label htmlFor="accept" className="flex">Xe vi phạm</Label>
+											</div>
+
+										</div>
+									</div>
+									<div>
+										<HR className="my-6" />
+									</div>
+									<div className="text-base font-semibold">
+										Thiết lập camera trên bản đổ
+									</div>
+									<div className="md:mt-3">
+										<Label htmlFor="fromdate" value="Mức xem bản đồ thấp nhất" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Mức xem bản đồ cao nhất" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Góc quay" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Kinh độ" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Vĩ độ" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div>
+										<HR className="my-6" />
+									</div>
+									<div className="text-base font-semibold">
+										Hình ảnh camera
+									</div>
+									<div className="md:mt-3">
+										<Label htmlFor="fromdate" value="Ảnh H264" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Ảnh Motion JPEG" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="Ảnh Snapshot" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="URL quay quét" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+									<div className="md:mt-4">
+										<Label htmlFor="fromdate" value="URL cài đặt" className="text-sm font-medium text-gray-900" />
+										<TextInput
+											theme={{
+												field: {
+													input: {
+														sizes: {
+															md: 'pl-4 pr-4 pt-2 pb-2 text-sm'
+														}
+													}
+												}
+											}}
+											sizing="md"
+											id="plate"
+											type="text"
+											placeholder=""
+											className="mt-2"
+											required />
+									</div>
+								</div>
+								<div className="mb-20">
+									<div className="mt-4">
+										<div className="flex flex-row gap-2.5">
+											<div>
+												<Button
+													theme={{
+														size: {
+															sm: 'px-3 py-2 text-sm'
+														}
+													}}
+													color="blue" size="sm">Thêm</Button>
+											</div>
+											<div>
+												<Button
+													theme={{
+														size: {
+															sm: 'px-3 py-2 text-sm'
+														}
+													}}
+													color="light" size="sm">Bỏ qua</Button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="flex w-full min-h-screen">
+								<MapContainer
+									className="w-full min-h-screen" center={centerMap} zoom={12} scrollWheelZoom={true}>
+									<ResizeMap />
+									<TileLayer
+										className="w-full"
+										attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+										url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+									/>
+									<Marker position={positionMap1}
+										icon={customIcon}
+									>
+										<Popup>
+											A pretty CSS3 popup. <br /> Easily customizable.
+										</Popup>
+									</Marker>
+								</MapContainer>
+							</div>
+						</div>
+					</BrowserView>
+					<MobileView>
+						<div className="grid grid-cols-1 md:flex md:flex-row gap-4 pl-4 h-[150dvh]">
+							<div className="pr-2 block pt-4  overflow-auto md:w-400 md:flex md:flex-col md:h-screen ">
 								<div className="text-base font-semibold">
 									Thông tin camera
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Vị trí" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -124,7 +598,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Số hiệu nút" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -143,7 +617,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Tên camera" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -162,7 +636,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Loại camera" className="text-sm font-medium text-gray-900" />
 									<Select
 										theme={{
@@ -183,7 +657,7 @@ export default function Camera() {
 										<option>Germany</option>
 									</Select>
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Tủ camera" className="text-sm font-medium text-gray-900" />
 									<Select
 										theme={{
@@ -204,7 +678,7 @@ export default function Camera() {
 										<option>Germany</option>
 									</Select>
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Số hiệu camera" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -223,7 +697,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="IP" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -242,21 +716,21 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Danh sách số điện thoại" className="text-sm font-medium text-gray-900" />
 									<Textarea id="comment" rows={3} />
 								</div>
-								<div className="md:mt-2 text-xs font-normal text-gray-500">
+								<div className="mt-2 text-xs font-normal text-gray-500">
 									Các số cách nhau bằng dấu |
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Danh sách email" className="text-sm font-medium text-gray-900" />
 									<Textarea id="comment" rows={3} />
 								</div>
-								<div className="md:mt-2 text-xs font-normal text-gray-500">
+								<div className="mt-2 text-xs font-normal text-gray-500">
 									Các số cách nhau bằng dấu |
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Bật/Tắt cảnh báo" className="text-sm font-medium text-gray-900" />
 								</div>
 								<div className="flex flex-row gap-2">
@@ -277,7 +751,7 @@ export default function Camera() {
 										<Label htmlFor="united-state" className="ml-1">Tắt</Label>
 									</div>
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Assign Role" className="text-sm font-medium text-gray-900" />
 								</div>
 								<div className="flex flex-row gap-4">
@@ -317,7 +791,7 @@ export default function Camera() {
 								<div className="text-base font-semibold">
 									Thiết lập camera trên bản đổ
 								</div>
-								<div className="md:mt-3">
+								<div className="mt-3">
 									<Label htmlFor="fromdate" value="Mức xem bản đồ thấp nhất" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -336,7 +810,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Mức xem bản đồ cao nhất" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -355,7 +829,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Góc quay" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -374,7 +848,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Kinh độ" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -393,7 +867,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Vĩ độ" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -418,7 +892,7 @@ export default function Camera() {
 								<div className="text-base font-semibold">
 									Hình ảnh camera
 								</div>
-								<div className="md:mt-3">
+								<div className="mt-3">
 									<Label htmlFor="fromdate" value="Ảnh H264" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -437,7 +911,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Ảnh Motion JPEG" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -456,7 +930,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="Ảnh Snapshot" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -475,7 +949,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="URL quay quét" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -494,7 +968,7 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-								<div className="md:mt-4">
+								<div className="mt-4">
 									<Label htmlFor="fromdate" value="URL cài đặt" className="text-sm font-medium text-gray-900" />
 									<TextInput
 										theme={{
@@ -513,8 +987,6 @@ export default function Camera() {
 										className="mt-2"
 										required />
 								</div>
-							</div>
-							<div className="mb-20">
 								<div className="mt-4">
 									<div className="flex flex-row gap-2.5">
 										<div>
@@ -538,26 +1010,26 @@ export default function Camera() {
 									</div>
 								</div>
 							</div>
+							<div className="flex w-full min-h-screen">
+								<MapContainer
+									className="w-full min-h-screen" center={centerMap} zoom={12} scrollWheelZoom={true}>
+									<ResizeMap />
+									<TileLayer
+										className="w-full"
+										attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+										url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+									/>
+									<Marker position={positionMap1}
+										icon={customIcon}
+									>
+										<Popup>
+											A pretty CSS3 popup. <br /> Easily customizable.
+										</Popup>
+									</Marker>
+								</MapContainer>
+							</div>
 						</div>
-						<div className="flex w-full min-h-screen">
-							<MapContainer
-								className="w-full min-h-screen" center={centerMap} zoom={12} scrollWheelZoom={true}>
-								<ResizeMap />
-								<TileLayer
-									className="w-full"
-									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-									url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-								/>
-								<Marker position={positionMap1}
-									icon={customIcon}
-								>
-									<Popup>
-										A pretty CSS3 popup. <br /> Easily customizable.
-									</Popup>
-								</Marker>
-							</MapContainer>
-						</div>
-					</div>
+					</MobileView>
 				</Drawer.Items>
 			</Drawer>
 			<section className="pb-3">
