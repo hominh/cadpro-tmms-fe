@@ -1,4 +1,4 @@
-import { HR, Sidebar, Table, Select, Button, TextInput, Drawer, Label, Radio, Checkbox, Modal, Textarea } from "flowbite-react";
+import { HR, Sidebar, Table, Select, Button, TextInput, Drawer, Label, Radio, Checkbox, Modal, Textarea, Pagination  } from "flowbite-react";
 import { useState, useEffect } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { MapContainer, TileLayer, useMap, } from 'react-leaflet'
@@ -10,6 +10,8 @@ import camfixed from '../assets/cam-fixed.png';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 export default function Camera() {
+	const [currentPage, setCurrentPage] = useState(1);
+  const onPageChange = (page) => setCurrentPage(page);
 	const [showFormAddCamera, setShowFormAddCamera] = useState(false);
 	const handleCloseFormAddCamera = () => setShowFormAddCamera(false);
 	const onShowFormAddCamera = () => setShowFormAddCamera(true);
@@ -1658,8 +1660,43 @@ export default function Camera() {
 												</Table.Row>
 											</Table.Body>
 										</Table>
-
 									</div>
+									<div className="grid grid-cols-1 pl-4 md:grid-cols-2 gap-4 pt-2">
+                      <div className="block col-span-1">
+                        <div className="flex flex-row gap-2.5">
+                          <div>
+                            <span className="text-sm pt-2 text-gray-500 font-normal block">Hiển thị</span>
+                          </div>
+                          <div>
+                            <Select
+                              id="countries" required>
+                              <option>100</option>
+                              <option>10</option>
+                            </Select>
+                          </div>
+                          <div className="pt-2">
+                            <span className="font-bold pt-2">1-10 </span> of <span className="font-bold pt-2">1000 </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mb-1 block col-span-1 md:text-right pr-3">
+                        <Pagination
+                          nextLabel=""
+                          previousLabel=""
+                          theme={{
+                            pages: {
+                              selector: {
+                                active: 'bg-blue-100 text-blue-700 hover:bg-cyan-100 hover:text-cyan-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white'
+                              }
+                            }
+                          }}
+                          currentPage={currentPage}
+                          totalPages={100}
+                          onPageChange={onPageChange}
+                          showIcons
+                        />
+                      </div>
+                    </div>
 								</div>
 							</div>
 						</div>
