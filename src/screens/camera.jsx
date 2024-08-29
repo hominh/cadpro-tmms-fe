@@ -1034,7 +1034,7 @@ export default function Camera() {
 			</Drawer>
 			<section className="pb-3">
 				<div className="grid grid-cols-1 md:grid-cols-12">
-					<div className="pt-3 block md:col-span-2 md:h-full pl-2">
+					<div className="pt-3 block md:col-span-2 pl-2">
 						<Sidebar
 							className="w-auto mr-4"
 							theme={{
@@ -1098,7 +1098,7 @@ export default function Camera() {
 							</Sidebar.Items>
 						</Sidebar>
 					</div>
-					<div className="pl-4  block md:col-span-10 md:h-full bg-gray-100 pb-2">
+					<div className="pl-4  block md:col-span-10  bg-gray-100 pb-2">
 						<div className="flex flex-col pr-4">
 							<div className="grid grid-cols-1 md:grid-cols-2 pb-4">
 								<div className="	text-sl font-semibold pt-4">Camera</div>

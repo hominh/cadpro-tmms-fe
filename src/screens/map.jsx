@@ -101,7 +101,7 @@ export default function Map() {
       <div>
         <HR className="my-0" />
       </div>
-      <div className="flex h-full md:overflow-y-hidden">
+      <div className="flex h-full md:overflow-y-auto">
         <div className="flex h-full basis-2/5 z-50">
           <Drawer
             edge
