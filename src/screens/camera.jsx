@@ -1,44 +1,32 @@
-import { HR, Sidebar, Table, Select, Button, TextInput, Drawer, Label, Radio, Checkbox, Modal, Textarea, Pagination  } from "flowbite-react";
+import { HR, Table, Select, Button, TextInput, Drawer, Label, Radio, Checkbox, Modal, Textarea, Pagination } from "flowbite-react";
 import { useState, useEffect } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import { MapContainer, TileLayer, useMap, } from 'react-leaflet'
-import { Marker } from "react-leaflet";
-import { Popup } from "react-leaflet";
-import 'leaflet/dist/leaflet.css'
-import { Icon } from "leaflet";
-import camfixed from '../assets/cam-fixed.png';
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import SettingsMapContainer from "../components/MapContainer";
+import SidebarSettings from "../components/SidebarSettings";
+import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 
 export default function Camera() {
 	const [currentPage, setCurrentPage] = useState(1);
-  const onPageChange = (page) => setCurrentPage(page);
+	const onPageChange = (page) => setCurrentPage(page);
 	const [showFormAddCamera, setShowFormAddCamera] = useState(false);
 	const handleCloseFormAddCamera = () => setShowFormAddCamera(false);
 	const onShowFormAddCamera = () => setShowFormAddCamera(true);
-	const [centerMap, setCenterMap] = useState([10.502307, 107.169205]);
-	const [positionMap1, setPositionMap1] = useState([10.502307, 107.169205]);
+	
 	const [openModalDeleteCamera, setOpenModalDeleteCamera] = useState(false);
 	const [classNameDrawer, setClassNameDrawer] = useState('');
-	const ResizeMap = () => {
-		const map = useMap();
-		map._onResize();
-		return null;
-	};
-	const customIcon = new Icon({
-		iconUrl: camfixed,
-		iconSize: [24, 16]
-	});
+	
+	
 	const handleWidthDrawer = () => {
 		if (isMobile) {
-      setClassNameDrawer('right-0 top-0 h-screen w-full transform-none');
-    }
-    else {
-      setClassNameDrawer('right-0 top-0 h-screen w-3/5 transform-none');
-    }
+			setClassNameDrawer('right-0 top-0 h-screen w-full transform-none');
+		}
+		else {
+			setClassNameDrawer('right-0 top-0 h-screen w-3/5 transform-none');
+		}
 	};
 	useEffect(() => {
-    handleWidthDrawer();
-  }, []);
+		handleWidthDrawer();
+	}, []);
 	return (
 		<>
 			<div>
@@ -294,7 +282,7 @@ export default function Camera() {
 										</div>
 									</div>
 									<div className="md:mt-4">
-										<Label htmlFor="fromdate" value="Assign Role" className="text-sm font-medium text-gray-900" />
+										<Label htmlFor="fromdate" value="Gửi tin nhắn khi" className="text-sm font-medium text-gray-900" />
 									</div>
 									<div className="flex flex-row gap-4">
 										<div className="flex flex-row gap-1">
@@ -556,22 +544,7 @@ export default function Camera() {
 								</div>
 							</div>
 							<div className="flex w-full min-h-screen">
-								<MapContainer
-									className="w-full min-h-screen" center={centerMap} zoom={12} scrollWheelZoom={true}>
-									<ResizeMap />
-									<TileLayer
-										className="w-full"
-										attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-										url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-									/>
-									<Marker position={positionMap1}
-										icon={customIcon}
-									>
-										<Popup>
-											A pretty CSS3 popup. <br /> Easily customizable.
-										</Popup>
-									</Marker>
-								</MapContainer>
+								<SettingsMapContainer />
 							</div>
 						</div>
 					</BrowserView>
@@ -1013,22 +986,7 @@ export default function Camera() {
 								</div>
 							</div>
 							<div className="flex w-full min-h-screen">
-								<MapContainer
-									className="w-full min-h-screen" center={centerMap} zoom={12} scrollWheelZoom={true}>
-									<ResizeMap />
-									<TileLayer
-										className="w-full"
-										attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-										url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-									/>
-									<Marker position={positionMap1}
-										icon={customIcon}
-									>
-										<Popup>
-											A pretty CSS3 popup. <br /> Easily customizable.
-										</Popup>
-									</Marker>
-								</MapContainer>
+								<SettingsMapContainer />
 							</div>
 						</div>
 					</MobileView>
@@ -1037,68 +995,7 @@ export default function Camera() {
 			<section className="pb-3">
 				<div className="grid grid-cols-1 md:grid-cols-12">
 					<div className="pt-3 block md:col-span-2 pl-2">
-						<Sidebar
-							className="w-auto mr-4"
-							theme={{
-								root: {
-									inner: 'h-full overflow-y-auto overflow-x-hidden rounded md:pb-4 dark:bg-gray-800'
-								},
-								item: {
-									base: 'flex items-center justify-center rounded-lg pr-0 pl-2 pt-1.5 pb-1.5 text-base font-medium text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
-									content: {
-										base: 'flex-1 whitespace-nowrap text-gray-900 font-medium text-sm',
-									},
-									label: 'text-gray-400 bg-inherit text-gray-400 font-medium text-sm'
-								}
-							}}
-							aria-label="Quick filter">
-							<Sidebar.Items>
-								<Sidebar.ItemGroup>
-									<Sidebar.Item key={1} className="">
-										Camera
-									</Sidebar.Item>
-									<Sidebar.Item key={2} className="">
-										Tủ camera
-									</Sidebar.Item>
-									<Sidebar.Item key={3} className="">
-										Tủ thông tin
-									</Sidebar.Item>
-									<Sidebar.Item key={4} className="">
-										Tủ nguồn
-									</Sidebar.Item>
-									<Sidebar.Item key={5} className="">
-										Tủ điều khiển
-									</Sidebar.Item>
-									<Sidebar.Item key={6} className="">
-										Đèn tín hiệu giao thông
-									</Sidebar.Item>
-									<Sidebar.Item key={7} className="">
-										Điểm đếm xe
-									</Sidebar.Item>
-									<Sidebar.Item key={8} className="">
-										Khu vực
-									</Sidebar.Item>
-									<Sidebar.Item key={9} className="">
-										Kế hoạch tủ điều khiển
-									</Sidebar.Item>
-									<Sidebar.Item key={10} className="">
-										Tuyến làn sóng xanh
-									</Sidebar.Item>
-									<Sidebar.Item key={11} className="">
-										Chiến lược làn sóng xanh
-									</Sidebar.Item>
-									<Sidebar.Item key={12} className="">
-										Kế hoạch tủ điều khiển
-									</Sidebar.Item>
-									<Sidebar.Item key={13} className="">
-										Xem log hệ thống
-									</Sidebar.Item>
-									<Sidebar.Item key={14} className="">
-										Quản lý người dùng
-									</Sidebar.Item>
-								</Sidebar.ItemGroup>
-							</Sidebar.Items>
-						</Sidebar>
+						<SidebarSettings />
 					</div>
 					<div className="pl-4  block md:col-span-10  bg-gray-100 pb-2">
 						<div className="flex flex-col pr-4">
@@ -1662,41 +1559,41 @@ export default function Camera() {
 										</Table>
 									</div>
 									<div className="grid grid-cols-1 pl-4 md:grid-cols-2 gap-4 pt-2">
-                      <div className="block col-span-1">
-                        <div className="flex flex-row gap-2.5">
-                          <div>
-                            <span className="text-sm pt-2 text-gray-500 font-normal block">Hiển thị</span>
-                          </div>
-                          <div>
-                            <Select
-                              id="countries" required>
-                              <option>100</option>
-                              <option>10</option>
-                            </Select>
-                          </div>
-                          <div className="pt-2">
-                            <span className="font-bold pt-2">1-10 </span> of <span className="font-bold pt-2">1000 </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mb-1 block col-span-1 md:text-right pr-3">
-                        <Pagination
-                          nextLabel=""
-                          previousLabel=""
-                          theme={{
-                            pages: {
-                              selector: {
-                                active: 'bg-blue-100 text-blue-700 hover:bg-cyan-100 hover:text-cyan-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white'
-                              }
-                            }
-                          }}
-                          currentPage={currentPage}
-                          totalPages={100}
-                          onPageChange={onPageChange}
-                          showIcons
-                        />
-                      </div>
-                    </div>
+										<div className="block col-span-1">
+											<div className="flex flex-row gap-2.5">
+												<div>
+													<span className="text-sm pt-2 text-gray-500 font-normal block">Hiển thị</span>
+												</div>
+												<div>
+													<Select
+														id="countries" required>
+														<option>100</option>
+														<option>10</option>
+													</Select>
+												</div>
+												<div className="pt-2">
+													<span className="font-bold pt-2">1-10 </span> of <span className="font-bold pt-2">1000 </span>
+												</div>
+											</div>
+										</div>
+										<div className="mb-1 block col-span-1 md:text-right pr-3">
+											<Pagination
+												nextLabel=""
+												previousLabel=""
+												theme={{
+													pages: {
+														selector: {
+															active: 'bg-blue-100 text-blue-700 hover:bg-cyan-100 hover:text-cyan-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white'
+														}
+													}
+												}}
+												currentPage={currentPage}
+												totalPages={100}
+												onPageChange={onPageChange}
+												showIcons
+											/>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

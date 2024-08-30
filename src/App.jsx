@@ -6,6 +6,7 @@ import Map from "./screens/map";
 import Login from "./screens/login";
 import Camera from "./screens/camera";
 import Dashboard from "./screens/dashboard";
+import CameraCabinet from "./screens/camera_cabinet";
 import AuthProvider from "./context/AuthProvider";
 
 export default function App() {
@@ -43,6 +44,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Camera />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/camera-cabinet"
+            element={
+              <ProtectedRoute>
+                <CameraCabinet />
               </ProtectedRoute>
             }
           />

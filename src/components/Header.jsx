@@ -35,6 +35,7 @@ function Header() {
 					<Navbar.Link href="/#map" className={`md:pl-4 md:pt-1.5 ${useLocation().pathname === "/map" ? " bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700 nav-link active" : ""}`}>Bản đồ</Navbar.Link>
 					<Navbar.Link href="/#violation" className={`md:pl-4 md:pt-1.5 ${useLocation().pathname === "/violation" ? " bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700 nav-link active" : ""}`}>Vi phạm</Navbar.Link>
 					<Navbar.Link href="/#camera" className={`md:pl-4 md:pt-1.5 ${useLocation().pathname === "/camera" ? " bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700 nav-link active" : ""}`}>Camera</Navbar.Link>
+					<Navbar.Link href="/#camera-cabinet" className={`md:pl-4 md:pt-1.5 ${useLocation().pathname === "/camera-cabinet" ? " bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700 nav-link active" : ""}`}>Tủ camera</Navbar.Link>
 				</Navbar.Collapse>
 				<div className="flex md:order-2">
 					<div className="grid grid-cols-5 md:grid-cols-5 gap-4">
