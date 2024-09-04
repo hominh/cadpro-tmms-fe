@@ -34,13 +34,13 @@ export default function CameraCabinet() {
       <div>
         <HR className="my-0" />
       </div>
-      <section className="pb-3 h-screen">
+      <section className="pb-3 h-full">
         <div className="grid grid-cols-1 h-full md:grid-cols-12">
           <div className="pt-3 block md:col-span-2 pl-2">
             <SidebarSettings />
           </div>
           <div className="pl-4  block md:col-span-10 h-full bg-gray-100 pb-2">
-            <div className="flex flex-col pr-4">
+            <div className="h-full flex flex-col pr-4">
               <div className="grid grid-cols-1 md:grid-cols-2 pb-4">
                 <div className="	text-sl font-semibold pt-4">Tủ camera</div>
                 <div className="pt-2 md:justify-self-end">
@@ -61,8 +61,8 @@ export default function CameraCabinet() {
                     </svg>Thêm tủ camera</Button>
                 </div>
               </div>
-              <div className="pt-4  pb-4 bg-white rounded-md">
-                <div className="flex flex-col">
+              <div className="pt-4 h-full pb-4 bg-white rounded-md">
+                <div className="flex flex-col h-full">
                   <div className="md:w-96 grid grid-cols-1 md:pl-4 md:pr-4">
                     <TextInput
                       theme={{
@@ -323,8 +323,24 @@ export default function CameraCabinet() {
                           </Table.Head>
                         </Table>
                       </div>
-                      <div className="mt-4 bg-gray-200 ">
-                        111
+                      <div className="h-full bg-gray-200 ">
+                        <div className="flex flex-col items-center mt-16 gap-4">
+                          <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="50" viewBox="0 0 51 50" fill="none">
+                              <g clip-path="url(#clip0_2086_10743)">
+                                <path d="M25.5 0C20.5555 0 15.722 1.46622 11.6108 4.21326C7.49953 6.96029 4.29521 10.8648 2.40302 15.4329C0.510832 20.0011 0.0157488 25.0277 0.980379 29.8772C1.94501 34.7268 4.32603 39.1813 7.82234 42.6777C11.3187 46.174 15.7732 48.555 20.6228 49.5196C25.4723 50.4842 30.4989 49.9892 35.0671 48.097C39.6352 46.2048 43.5397 43.0005 46.2867 38.8892C49.0338 34.778 50.5 29.9445 50.5 25C50.4927 18.3718 47.8565 12.0172 43.1696 7.33037C38.4828 2.64354 32.1282 0.00727899 25.5 0ZM25.5 37.5C25.0056 37.5 24.5222 37.3534 24.1111 37.0787C23.7 36.804 23.3795 36.4135 23.1903 35.9567C23.0011 35.4999 22.9516 34.9972 23.048 34.5123C23.1445 34.0273 23.3826 33.5819 23.7322 33.2322C24.0819 32.8826 24.5273 32.6445 25.0123 32.548C25.4972 32.4516 25.9999 32.5011 26.4567 32.6903C26.9135 32.8795 27.304 33.1999 27.5787 33.6111C27.8534 34.0222 28 34.5055 28 35C28 35.663 27.7366 36.2989 27.2678 36.7678C26.7989 37.2366 26.163 37.5 25.5 37.5ZM28 27.5C28 28.163 27.7366 28.7989 27.2678 29.2678C26.7989 29.7366 26.163 30 25.5 30C24.837 30 24.2011 29.7366 23.7322 29.2678C23.2634 28.7989 23 28.163 23 27.5V15C23 14.337 23.2634 13.7011 23.7322 13.2322C24.2011 12.7634 24.837 12.5 25.5 12.5C26.163 12.5 26.7989 12.7634 27.2678 13.2322C27.7366 13.7011 28 14.337 28 15V27.5Z" fill="#1F2A37" />
+                              </g>
+                              <defs>
+                                <clipPath id="clip0_2086_10743">
+                                  <rect width="50" height="50" fill="white" transform="translate(0.5)" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                          </div>
+                          <div className="text-lg font-normal text-black">
+                          Không có dữ liệu
+                          </div>
+                        </div>
                       </div>
                     </>
                   )}
