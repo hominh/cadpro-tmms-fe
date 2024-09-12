@@ -21,7 +21,7 @@ export default function Camera() {
 		setShowFormAddCamera(false);
 		setShowToastAddCameraSuccess((state) => !state);
 	};
-
+	
 	const deleteCamera = () => {
 		setOpenModalDeleteCamera(false);
 		setShowToastDeleteCameraSuccess((state) => !state);
@@ -51,7 +51,7 @@ export default function Camera() {
 				>
 					<div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-green-500 dark:bg-green-800 dark:text-green-200">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M16.707 5.29303C16.8945 5.48056 16.9998 5.73487 16.9998 6.00003C16.9998 6.26519 16.8945 6.5195 16.707 6.70703L8.70704 14.707C8.51951 14.8945 8.26521 14.9998 8.00004 14.9998C7.73488 14.9998 7.48057 14.8945 7.29304 14.707L3.29304 10.707C3.11088 10.5184 3.01009 10.2658 3.01237 10.0036C3.01465 9.74143 3.11981 9.49062 3.30522 9.30521C3.49063 9.1198 3.74144 9.01464 4.00364 9.01236C4.26584 9.01008 4.51844 9.11087 4.70704 9.29303L8.00004 12.586L15.293 5.29303C15.4806 5.10556 15.7349 5.00024 16 5.00024C16.2652 5.00024 16.5195 5.10556 16.707 5.29303Z" fill="#1C64F2" />
+							<path fillRule="evenodd" clipRule="evenodd" d="M16.707 5.29303C16.8945 5.48056 16.9998 5.73487 16.9998 6.00003C16.9998 6.26519 16.8945 6.5195 16.707 6.70703L8.70704 14.707C8.51951 14.8945 8.26521 14.9998 8.00004 14.9998C7.73488 14.9998 7.48057 14.8945 7.29304 14.707L3.29304 10.707C3.11088 10.5184 3.01009 10.2658 3.01237 10.0036C3.01465 9.74143 3.11981 9.49062 3.30522 9.30521C3.49063 9.1198 3.74144 9.01464 4.00364 9.01236C4.26584 9.01008 4.51844 9.11087 4.70704 9.29303L8.00004 12.586L15.293 5.29303C15.4806 5.10556 15.7349 5.00024 16 5.00024C16.2652 5.00024 16.5195 5.10556 16.707 5.29303Z" fill="#1C64F2" />
 						</svg>
 					</div>
 					<div className="ml-3 text-sm font-normal">Đã thêm camera</div>
@@ -68,7 +68,7 @@ export default function Camera() {
 				>
 					<div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-green-500 dark:bg-green-800 dark:text-green-200">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M16.707 5.29303C16.8945 5.48056 16.9998 5.73487 16.9998 6.00003C16.9998 6.26519 16.8945 6.5195 16.707 6.70703L8.70704 14.707C8.51951 14.8945 8.26521 14.9998 8.00004 14.9998C7.73488 14.9998 7.48057 14.8945 7.29304 14.707L3.29304 10.707C3.11088 10.5184 3.01009 10.2658 3.01237 10.0036C3.01465 9.74143 3.11981 9.49062 3.30522 9.30521C3.49063 9.1198 3.74144 9.01464 4.00364 9.01236C4.26584 9.01008 4.51844 9.11087 4.70704 9.29303L8.00004 12.586L15.293 5.29303C15.4806 5.10556 15.7349 5.00024 16 5.00024C16.2652 5.00024 16.5195 5.10556 16.707 5.29303Z" fill="#1C64F2" />
+							<path fillRule="evenodd" clipRule="evenodd" d="M16.707 5.29303C16.8945 5.48056 16.9998 5.73487 16.9998 6.00003C16.9998 6.26519 16.8945 6.5195 16.707 6.70703L8.70704 14.707C8.51951 14.8945 8.26521 14.9998 8.00004 14.9998C7.73488 14.9998 7.48057 14.8945 7.29304 14.707L3.29304 10.707C3.11088 10.5184 3.01009 10.2658 3.01237 10.0036C3.01465 9.74143 3.11981 9.49062 3.30522 9.30521C3.49063 9.1198 3.74144 9.01464 4.00364 9.01236C4.26584 9.01008 4.51844 9.11087 4.70704 9.29303L8.00004 12.586L15.293 5.29303C15.4806 5.10556 15.7349 5.00024 16 5.00024C16.2652 5.00024 16.5195 5.10556 16.707 5.29303Z" fill="#1C64F2" />
 						</svg>
 					</div>
 					<div className="ml-3 text-sm font-normal">Đã xóa camera</div>
@@ -579,6 +579,7 @@ export default function Camera() {
 											</div>
 											<div>
 												<Button
+													onClick={() => setShowFormAddCamera(false)}
 													theme={{
 														size: {
 															sm: 'px-3 py-2 text-sm'
@@ -1042,7 +1043,7 @@ export default function Camera() {
 			<section className="pb-3 h-full">
 				<div className="grid grid-cols-1 md:grid-cols-12">
 					<div className="pt-3 block md:col-span-2 pl-2">
-						<SidebarSettings />
+						<SidebarSettings activeItem="camera_item" />
 					</div>
 					<div className="pl-4  block md:col-span-10  bg-gray-100 pb-2 h-full">
 						<div className="flex h-full flex-col pr-4">

@@ -5,27 +5,27 @@ import SettingsMapContainer from "../components/MapContainer";
 import SidebarSettings from "../components/SidebarSettings";
 import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 
-export default function CameraCabinet() {
+export default function PowerCabinet() {
   const [currentPage, setCurrentPage] = useState(1);
   const onPageChange = (page) => setCurrentPage(page);
-  const [showFormAddCameraCabinet, setShowFormAddCameraCabinet] = useState(false);
-  const handleCloseFormAddCameraCabinet = () => setShowFormAddCameraCabinet(false);
-  const onShowFormAddCameraCabinet = () => setShowFormAddCameraCabinet(true);
-  const [showToastAddCameraCabinetSucess, setShowToastAddCameraCabinetSuccess] = useState(false);
-  const [showToastDeleteCameraCabinetSuccess, setShowToastDeleteCameraCabinetSuccess] = useState(false);
-  const [openModalDeleteCameraCabinet, setOpenModalDeleteCameraCabinet] = useState(false);
+  const [showFormAddPowerCabinet, setShowFormAddPowerCabinet] = useState(false);
+  const handleCloseFormAddPowerCabinet = () => setShowFormAddPowerCabinet(false);
+  const onShowFormAddPowerCabinet = () => setShowFormAddPowerCabinet(true);
+  const [showToastAddPowerCabinetSucess, setShowToastAddPowerCabinetSuccess] = useState(false);
+  const [showToastDeletePowerCabinetSuccess, setShowToastDeletePowerCabinetSuccess] = useState(false);
+  const [openModalDeletePowerCabinet, setOpenModalDeletePowerCabinet] = useState(false);
   const [classNameDrawer, setClassNameDrawer] = useState('');
 
   const [showDataTable, setShowDataTable] = useState(true);
 
-  const addCameraCabinet = () => {
-		setShowFormAddCameraCabinet(false);
-		setShowToastAddCameraCabinetSuccess((state) => !state);
+  const addPowerCabinet = () => {
+		setShowFormAddPowerCabinet(false);
+		setShowToastAddPowerCabinetSuccess((state) => !state);
 	};
 
-  const deleteCameraCabinet = () => {
-		setOpenModalDeleteCameraCabinet(false);
-		setShowToastDeleteCameraCabinetSuccess((state) => !state);
+  const deletePowerCabinet = () => {
+		setOpenModalDeletePowerCabinet(false);
+		setShowToastDeletePowerCabinetSuccess((state) => !state);
 	};
 
   const handleWidthDrawer = () => {
@@ -41,7 +41,7 @@ export default function CameraCabinet() {
   }, []);
   return (
     <>
-      {showToastAddCameraCabinetSucess && (
+      {showToastAddPowerCabinetSucess && (
 				<Toast
 					theme={{
 						root: {
@@ -54,11 +54,11 @@ export default function CameraCabinet() {
 							<path fillRule="evenodd" clipRule="evenodd" d="M16.707 5.29303C16.8945 5.48056 16.9998 5.73487 16.9998 6.00003C16.9998 6.26519 16.8945 6.5195 16.707 6.70703L8.70704 14.707C8.51951 14.8945 8.26521 14.9998 8.00004 14.9998C7.73488 14.9998 7.48057 14.8945 7.29304 14.707L3.29304 10.707C3.11088 10.5184 3.01009 10.2658 3.01237 10.0036C3.01465 9.74143 3.11981 9.49062 3.30522 9.30521C3.49063 9.1198 3.74144 9.01464 4.00364 9.01236C4.26584 9.01008 4.51844 9.11087 4.70704 9.29303L8.00004 12.586L15.293 5.29303C15.4806 5.10556 15.7349 5.00024 16 5.00024C16.2652 5.00024 16.5195 5.10556 16.707 5.29303Z" fill="#1C64F2" />
 						</svg>
 					</div>
-					<div className="ml-3 text-sm font-normal">Đã thêm tủ camera</div>
-					<Toast.Toggle onDismiss={() => setShowToastAddCameraCabinetSuccess(false)} />
+					<div className="ml-3 text-sm font-normal">Đã thêm tủ nguồn</div>
+					<Toast.Toggle onDismiss={() => setShowToastAddPowerCabinetSuccess(false)} />
 				</Toast>
 			)}
-			{showToastDeleteCameraCabinetSuccess && (
+			{showToastDeletePowerCabinetSuccess && (
 				<Toast
 					theme={{
 						root: {
@@ -71,8 +71,8 @@ export default function CameraCabinet() {
 							<path fillRule="evenodd" clipRule="evenodd" d="M16.707 5.29303C16.8945 5.48056 16.9998 5.73487 16.9998 6.00003C16.9998 6.26519 16.8945 6.5195 16.707 6.70703L8.70704 14.707C8.51951 14.8945 8.26521 14.9998 8.00004 14.9998C7.73488 14.9998 7.48057 14.8945 7.29304 14.707L3.29304 10.707C3.11088 10.5184 3.01009 10.2658 3.01237 10.0036C3.01465 9.74143 3.11981 9.49062 3.30522 9.30521C3.49063 9.1198 3.74144 9.01464 4.00364 9.01236C4.26584 9.01008 4.51844 9.11087 4.70704 9.29303L8.00004 12.586L15.293 5.29303C15.4806 5.10556 15.7349 5.00024 16 5.00024C16.2652 5.00024 16.5195 5.10556 16.707 5.29303Z" fill="#1C64F2" />
 						</svg>
 					</div>
-					<div className="ml-3 text-sm font-normal">Đã xóa tủ camera</div>
-					<Toast.Toggle onDismiss={() => setShowToastDeleteCameraCabinetSuccess(false)} />
+					<div className="ml-3 text-sm font-normal">Đã xóa tủ nguồn</div>
+					<Toast.Toggle onDismiss={() => setShowToastDeletePowerCabinetSuccess(false)} />
 				</Toast>
 			)}
       <div>
@@ -84,7 +84,7 @@ export default function CameraCabinet() {
 						base: 'flex items-start justify-between rounded-t p-5'
 					}
 				}}
-				size="md" dismissible show={openModalDeleteCameraCabinet} onClose={() => setOpenModalDeleteCameraCabinet(false)}>
+				size="md" dismissible show={openModalDeletePowerCabinet} onClose={() => setOpenModalDeletePowerCabinet(false)}>
 				<Modal.Header />
 				<Modal.Body>
 					<div className="flex flex-col">
@@ -100,7 +100,7 @@ export default function CameraCabinet() {
 							</svg>
 						</div>
 						<div className="flex justify-center items-center mt-4 text-base font-normal text-gray-500">
-							Bạn có muốn xóa tủ camera này?
+							Bạn có muốn xóa tủ nguồn này?
 						</div>
 						<div className="flex justify-center items-center text-base font-normal text-gray-500">
 							Hành động này không thể phục hồi
@@ -108,10 +108,10 @@ export default function CameraCabinet() {
 						<div className="mt-5 flex justify-center items-center">
 							<div className="flex flex-row gap-4">
 								<div>
-									<Button onClick={e => deleteCameraCabinet()} size="xs" color="failure">Xóa</Button>
+									<Button onClick={e => deletePowerCabinet()} size="xs" color="failure">Xóa</Button>
 								</div>
 								<div>
-									<Button onClick={e => setOpenModalDeleteCameraCabinet(false)} size="xs" color="light">Không xóa</Button>
+									<Button onClick={e => setOpenModalDeletePowerCabinet(false)} size="xs" color="light">Không xóa</Button>
 								</div>
 							</div>
 						</div>
@@ -121,8 +121,8 @@ export default function CameraCabinet() {
 			<Drawer
 				className="md:h-full"
 				backdrop={true}
-				open={showFormAddCameraCabinet}
-				onClose={handleCloseFormAddCameraCabinet}
+				open={showFormAddPowerCabinet}
+				onClose={handleCloseFormAddPowerCabinet}
 				position="right"
 				theme={{
 					root: {
@@ -143,7 +143,7 @@ export default function CameraCabinet() {
 			>
 				<div className="flex flex-row gap-1 pl-4 pr-4">
 					<div>
-						<Drawer.Header title="Thêm tủ camera" />
+						<Drawer.Header title="Thêm tủ nguồn" />
 					</div>
 				</div>
 				<HR className="mt-2 mb-0" />
@@ -153,7 +153,7 @@ export default function CameraCabinet() {
 							<div className="w-400 pt-4 flex flex-col h-screen">
 								<div className="flex flex-col overflow-y-auto h-full max-h-screen">
 									<div className="text-base font-semibold">
-										Thông tin tủ camera
+										Thông tin tủ nguồn
 									</div>
 									<div className="md:mt-4">
 										<Label htmlFor="fromdate" value="Vị trí" className="text-sm font-medium text-gray-900" />
@@ -234,7 +234,7 @@ export default function CameraCabinet() {
 										</Select>
 									</div>
 									<div className="md:mt-4">
-										<Label htmlFor="fromdate" value="Tủ camera" className="text-sm font-medium text-gray-900" />
+										<Label htmlFor="fromdate" value="Tủ nguồn" className="text-sm font-medium text-gray-900" />
 										<Select
 											theme={{
 												field: {
@@ -569,7 +569,7 @@ export default function CameraCabinet() {
 										<div className="flex flex-row gap-2.5">
 											<div>
 												<Button
-													onClick={e => addCameraCabinet()}
+													onClick={e => addPowerCabinet()}
 													theme={{
 														size: {
 															sm: 'px-3 py-2 text-sm'
@@ -579,7 +579,7 @@ export default function CameraCabinet() {
 											</div>
 											<div>
 												<Button
-                          onClick={() => setShowFormAddCameraCabinet(false)}
+                          onClick={() => setShowFormAddPowerCabinet(false)}
 													theme={{
 														size: {
 															sm: 'px-3 py-2 text-sm'
@@ -681,7 +681,7 @@ export default function CameraCabinet() {
 									</Select>
 								</div>
 								<div className="mt-4">
-									<Label htmlFor="fromdate" value="Tủ camera" className="text-sm font-medium text-gray-900" />
+									<Label htmlFor="fromdate" value="Tủ nguồn" className="text-sm font-medium text-gray-900" />
 									<Select
 										theme={{
 											field: {
@@ -1014,7 +1014,7 @@ export default function CameraCabinet() {
 									<div className="flex flex-row gap-2.5">
 										<div>
 											<Button
-                        onClick={e => addCameraCabinet()}
+                        onClick={e => addPowerCabinet()}
 												theme={{
 													size: {
 														sm: 'px-3 py-2 text-sm'
@@ -1044,15 +1044,15 @@ export default function CameraCabinet() {
       <section className="pb-3 h-full">
         <div className="grid grid-cols-1 h-full md:grid-cols-12">
           <div className="pt-3 block md:col-span-2 pl-2">
-            <SidebarSettings activeItem="camera_cabinet_item" />
+            <SidebarSettings activeItem="power_cabinet_item" />
           </div>
           <div className="pl-4  block md:col-span-10 h-full bg-gray-100 pb-2">
             <div className="h-full flex flex-col pr-4">
               <div className="grid grid-cols-1 md:grid-cols-2 pb-4">
-                <div className="	text-sl font-semibold pt-4">Tủ camera</div>
+                <div className="	text-sl font-semibold pt-4">Tủ nguồn</div>
                 <div className="pt-2 md:justify-self-end">
                   <Button
-                    onClick={e => onShowFormAddCameraCabinet()}
+                    onClick={e => onShowFormAddPowerCabinet()}
                     theme={{
                       base: 'group relative flex items-stretch justify-center text-center font-medium transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] focus:z-10 focus:outline-none',
                       size: {
@@ -1065,7 +1065,7 @@ export default function CameraCabinet() {
                     <svg className="mr-2 h-3 w-3 mt-1" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M6 6.5H3Z" fill="white" />
                       <path d="M6 3.5V6.5M6 6.5V9.5M6 6.5H9M6 6.5H3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>Thêm tủ camera</Button>
+                    </svg>Thêm tủ nguồn</Button>
                 </div>
               </div>
               <div className="pt-4 h-full pb-4 bg-white rounded-md">
@@ -1081,7 +1081,7 @@ export default function CameraCabinet() {
                           }
                         }
                       }}
-                      id="plate" type="text" icon={IoSearchOutline} placeholder="Tìm tủ camera" sizing="sm" required />
+                      id="plate" type="text" icon={IoSearchOutline} placeholder="Tìm tủ nguồn" sizing="sm" required />
                   </div>
                   {showDataTable ? (
                     <>
@@ -1144,7 +1144,7 @@ export default function CameraCabinet() {
                                 <div className="flex flex-row gap-6">
                                   <div>
                                     <Button size="sm"
-                                      onClick={e => onShowFormAddCameraCabinet()}
+                                      onClick={e => onShowFormAddPowerCabinet()}
                                       color="blue"
                                       theme={{
                                         color: {
@@ -1164,7 +1164,7 @@ export default function CameraCabinet() {
                                   </div>
                                   <div>
                                     <Button size="sm"
-                                      onClick={e => setOpenModalDeleteCameraCabinet(true)}
+                                      onClick={e => setOpenModalDeletePowerCabinet(true)}
                                       color="red"
                                       theme={{
                                         color: {

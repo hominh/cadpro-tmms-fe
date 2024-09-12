@@ -7,6 +7,8 @@ import Login from "./screens/login";
 import Camera from "./screens/camera";
 import Dashboard from "./screens/dashboard";
 import CameraCabinet from "./screens/camera_cabinet";
+import PowerCabinet from "./screens/power_cabinet";
+import InformationCabinet from "./screens/information_cabinet";
 import AuthProvider from "./context/AuthProvider";
 
 export default function App() {
@@ -52,6 +54,22 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <CameraCabinet />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/information-cabinet"
+            element={
+              <ProtectedRoute>
+                <InformationCabinet />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/power-cabinet"
+            element={
+              <ProtectedRoute>
+                <PowerCabinet />
               </ProtectedRoute>
             }
           />

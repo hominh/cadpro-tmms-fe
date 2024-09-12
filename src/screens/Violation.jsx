@@ -1,9 +1,8 @@
-import { Tabs, HR, TextInput, Button, Table, Pagination, Label, Select, Accordion, Textarea, Sidebar, Badge, Drawer } from "flowbite-react";
+import { Tabs, HR, TextInput, Button, Table, Pagination, Label, Select, Accordion, Textarea, Sidebar, Badge, Drawer, Tooltip } from "flowbite-react";
 import { IoSearchOutline } from "react-icons/io5";
 import { useState } from "react";
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
-import Header from "../components/Header";
 import image1 from '../assets/image1.png';
 import image2 from '../assets/image2.png';
 import noimage from '../assets/noimage.png';
@@ -401,7 +400,7 @@ export default function Violation() {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-1 py-4">
+              <div className="grid grid-cols-1 md:grid-cols-1">
                 <div className="block col-span-1 mt-2">
                   <div className="overflow-x-auto w-full">
                     <Drawer
@@ -598,10 +597,11 @@ export default function Violation() {
                       </Drawer.Items>
                     </Drawer>
                     <Table
+                      className="overflow-x-hidden"
                       theme={{
                         head: {
                           cell: {
-                            base: 'bg-gray-50 px-4 py-4 group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg dark:bg-gray-700'
+                            base: 'bg-gray-50 px-4 py-3 group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg dark:bg-gray-700'
                           }
                         },
                         body: {
@@ -619,105 +619,159 @@ export default function Violation() {
                         <Table.HeadCell>TRẠNG THÁI</Table.HeadCell>
                         <Table.HeadCell>CẢNH BÁO</Table.HeadCell>
                       </Table.Head>
-                      <Table.Body className="divide-y whitespace-nowrap	">
+                      <Table.Body className="divide-y max-sm:whitespace-nowrap 	">
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                         <Table.Row
                           className="bg-white dark:border-gray-700 dark:bg-gray-800"
                           onClick={e => GetDetailViolation()}
                         >
                           <Table.Cell><p className="text-sm text-gray-900 font-semibold">14687</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">2024/07/24 17:47:07</p></Table.Cell>
+                          <Tooltip content="2024/07/24 17:47:07"><Table.Cell><p className="text-sm text-gray-900 font-normal line-clamp-1">2024/07/24 17:47:07</p></Table.Cell></Tooltip>
                           <Table.Cell><p className="text-sm text-gray-900 font-normal">30P1300</p></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Nút giao ngã tư Đội Cấn - Giang Văn Minh</p></Table.Cell>
-                          <Table.Cell><Badge size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Table.Cell>
-                          <Table.Cell><p className="text-sm text-gray-900 font-normal">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Table.Cell>
+                          <Table.Cell><Tooltip content="Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012"><p className="text-sm text-gray-900 font-normal line-clamp-1">Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012Nút giao Long Sơn_Xã Tân Hải, TX. Phú Mỹ_Km 56+930_QL51/VP5N012</p></Tooltip></Table.Cell>
+                          <Table.Cell className="line-clamp-1"><Tooltip content="Đã phát hiện"><Badge
+                            theme={{
+                              root: {
+                                base: 'flex h-fit items-center gap-1 font-semibold justify-center line-clamp-1'
+                              }
+                            }}
+                            size="xs" className="bg-primary-100" href="#">Đã phát hiện</Badge></Tooltip></Table.Cell>
+                          <Table.Cell><Tooltip content="Không chấp hành hiệu lệnh đèn tín hiệu giao thông"><p className="text-sm text-gray-900 font-normal line-clamp-1">Không chấp hành hiệu lệnh đèn tín hiệu giao thông</p></Tooltip></Table.Cell>
                         </Table.Row>
                       </Table.Body>
                     </Table>
